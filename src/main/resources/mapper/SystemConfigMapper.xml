@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.eula.budu.mapper.SystemConfigMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.eula.budu.entity.SystemConfig">
+        <id column="id" property="id" />
+        <result column="qi_niu_access_key" property="qiNiuAccessKey" />
+        <result column="qi_niu_secret_key" property="qiNiuSecretKey" />
+        <result column="qi_niu_area" property="qiNiuArea" />
+        <result column="qi_niu_bucket" property="qiNiuBucket" />
+        <result column="qi_niu_picture_base_url" property="qiNiuPictureBaseUrl" />
+        <result column="upload_qi_niu" property="uploadQiNiu" />
+        <result column="open_email_activate" property="openEmailActivate" />
+        <result column="start_email_notification" property="startEmailNotification" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+        <result column="open_dashboard_notification" property="openDashboardNotification" />
+        <result column="dashboard_notification_md" property="dashboardNotificationMd" />
+        <result column="dashboard_notification" property="dashboardNotification" />
+        <result column="search_model" property="searchModel" />
+        <result column="email_host" property="emailHost" />
+        <result column="email_username" property="emailUsername" />
+        <result column="email_password" property="emailPassword" />
+        <result column="email_port" property="emailPort" />
+        <result column="open_email" property="openEmail" />
+        <result column="local_file_url" property="localFileUrl" />
+        <result column="file_upload_way" property="fileUploadWay" />
+        <result column="ali_yun_access_key" property="aliYunAccessKey" />
+        <result column="ali_yun_secret_key" property="aliYunSecretKey" />
+        <result column="ali_yun_bucket" property="aliYunBucket" />
+        <result column="ali_yun_endpoint" property="aliYunEndpoint" />
+    </resultMap>
+
+</mapper>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.eula.budu.mapper.UserLogMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.eula.budu.entity.UserLog">
+        <id column="id" property="id" />
+        <result column="user_id" property="userId" />
+        <result column="ip" property="ip" />
+        <result column="address" property="address" />
+        <result column="type" property="type" />
+        <result column="description" property="description" />
+        <result column="model" property="model" />
+        <result column="create_time" property="createTime" />
+        <result column="result" property="result" />
+        <result column="access_os" property="accessOs" />
+        <result column="browser" property="browser" />
+        <result column="client_type" property="clientType" />
+    </resultMap>
+
+</mapper>
