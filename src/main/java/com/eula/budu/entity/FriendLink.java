@@ -50,7 +50,7 @@ public class FriendLink implements Serializable {
     @ApiModelProperty(value = "排序")
     private Integer sort;
 
-    @ApiModelProperty(value = "ENUM-状态:"0-待审核","1-通过"")
+    @ApiModelProperty(value = "ENUM-状态: 0-待审核 1-通过")
     private Integer status;
 
     @ApiModelProperty(value = "创建时间")

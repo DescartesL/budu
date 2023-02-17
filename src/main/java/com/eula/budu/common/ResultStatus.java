@@ -1,0 +1,45 @@
+package com.eula.budu.common;
+
+/**
+ * @author DesLUO
+ */
+
+public enum ResultStatus {
+    // 成功
+    SUCCESS(200, "SUCCESS"),
+    // 失败
+    FAILURE(400, "FAILURE"),
+
+    // 系统级别错误
+    ERROR(-1, "操作异常"),
+    ERROR_DEFAULT(500, "系统繁忙，请稍后重试"),
+    NOT_LOGIN(401, "请先登录"),
+    NO_PERMISSION(-2, "无权限"),
+    ERROR_PASSEORD(-8, "账户或者密码错误"),
+    DISABLE_ACCOUNT(-9, "账号已禁用");
+
+
+    public int code;
+    public String desc;
+
+    ResultStatus(int code, String desc){
+        this.code = code;
+        this.desc = desc;
+    }
+
+    public int getCode() {
+        return code;
+    }
+
+    public void setCode(int code) {
+        this.code = code;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }
+}
