@@ -16,7 +16,10 @@ public enum ResultStatus {
     NOT_LOGIN(401, "请先登录"),
     NO_PERMISSION(-2, "无权限"),
     ERROR_PASSEORD(-8, "账户或者密码错误"),
-    DISABLE_ACCOUNT(-9, "账号已禁用");
+    DISABLE_ACCOUNT(-9, "账号已禁用"),
+    // 登录相关注册
+
+    ERROR_MUST_REGISTER(10017, "请先注册");
 
 
     public int code;

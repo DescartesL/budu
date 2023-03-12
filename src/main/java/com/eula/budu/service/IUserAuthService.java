@@ -1,7 +1,14 @@
 package com.eula.budu.service;
 
+import com.eula.budu.DTO.EmailLoginDTO;
+import com.eula.budu.DTO.EmailRegisterDTO;
+import com.eula.budu.DTO.LoginDTO;
+import com.eula.budu.common.ResponseResult;
 import com.eula.budu.entity.UserAuth;
 import com.baomidou.mybatisplus.extension.service.IService;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import javax.validation.Valid;
 
 /**
  * <p>
@@ -13,4 +20,9 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface IUserAuthService extends IService<UserAuth> {
 
+    ResponseResult emailLogin(EmailLoginDTO emailLoginDTO);
+
+    RequestBody login(@Valid LoginDTO loginDTO);
+
+    ResponseResult emailRegister(@Valid EmailRegisterDTO emailRegisterDTO);
 }
