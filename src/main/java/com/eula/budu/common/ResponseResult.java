@@ -6,7 +6,7 @@ import lombok.Data;
 
 import java.util.HashMap;
 import java.util.Map;
-import static com.eula.budu.common.ResultStatus.*;
+import static com.eula.budu.common.ResultConstants.*;
 
 @Data
 @ApiModel(value = "统一返回结果类")

@@ -18,6 +18,7 @@
 		<mybatis-plus-boot-starter.version>3.5.3.1</mybatis-plus-boot-starter.version>
 		<mysql.version>8.0.31</mysql.version>
 		<mybatis-spring-boot-starter.version>3.0.0</mybatis-spring-boot-starter.version>
+		<sa-token-version>1.29.0</sa-token-version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -106,11 +107,47 @@
 			<version>3.8</version>
 		</dependency>
 
-		<!-- Sa-Token 权限认证，在线文档：https://sa-token.cc -->
+
+		<!-- sa-token权限认证框架 -->
 		<dependency>
 			<groupId>cn.dev33</groupId>
 			<artifactId>sa-token-spring-boot-starter</artifactId>
-			<version>1.34.0</version>
+			<version>${sa-token-version}</version>
+		</dependency>
+		<!-- Sa-Token 整合 Redis （使用jackson序列化方式） -->
+		<dependency>
+			<groupId>cn.dev33</groupId>
+			<artifactId>sa-token-dao-redis-jackson</artifactId>
+			<version>${sa-token-version}</version>
+		</dependency>
+		<!-- Sa-Token插件：权限缓存与业务缓存分离 -->
+		<dependency>
+			<groupId>cn.dev33</groupId>
+			<artifactId>sa-token-alone-redis</artifactId>
+			<version>${sa-token-version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-pool2</artifactId>
+		</dependency>
+
+		<!-- 验证码 -->
+		<dependency>
+			<groupId>com.github.penggle</groupId>
+			<artifactId>kaptcha</artifactId>
+			<version>2.3.2</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>javax.servlet-api</artifactId>
+					<groupId>javax.servlet</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<!--email-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-mail</artifactId>
 		</dependency>
 
 

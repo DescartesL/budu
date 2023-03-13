@@ -6,6 +6,7 @@ import com.eula.budu.DTO.LoginDTO;
 import com.eula.budu.common.ResponseResult;
 import com.eula.budu.service.IUserAuthService;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiModelProperty;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,8 +40,19 @@ public class UserController {
 
     @RequestMapping(value = "/emailRegister", method = RequestMethod.POST)
     @ApiOperation(value = "邮箱注册", httpMethod = "POST", response = ResponseResult.class, notes = "邮箱注册" )
-
     public ResponseResult emailRegister(@Valid @RequestBody EmailRegisterDTO emailRegisterDTO){
         return userAuthService.emailRegister(emailRegisterDTO);
+    }
+
+    @RequestMapping(value = "/updatePassword", method = RequestMethod.POST)
+    @ApiOperation(value = "修改密码", httpMethod = "POST", response = ResponseResult.class, notes = "修改密码")
+    public ResponseResult updatePassword(@Valid @RequestBody EmailRegisterDTO emailRegisterDTO){
+        return userAuthService.updatePassword(emailRegisterDTO);
+    }
+
+    @RequestMapping(value = "/sendEmailCode", method = RequestMethod.GET)
+    @ApiOperation(value = "请求验证码", httpMethod = "GET", response = ResponseResult.class, notes = "请求验证码")
+    public ResponseResult sendEmailCode(String email){
+        return userAuthService.sendEmailCode(email);
     }
 }

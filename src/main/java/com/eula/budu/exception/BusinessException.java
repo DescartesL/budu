@@ -1,9 +1,9 @@
 package com.eula.budu.exception;
 
-import com.eula.budu.common.ResultStatus;
+import com.eula.budu.common.ResultConstants;
 import lombok.Data;
 import org.springframework.web.bind.annotation.ControllerAdvice;
-import static com.eula.budu.common.ResultStatus.ERROR;
+import static com.eula.budu.common.ResultConstants.ERROR;
 
 @Data
 @ControllerAdvice(basePackages = "com.eula.budu")
@@ -16,10 +16,10 @@ public class BusinessException extends RuntimeException{
 
     public BusinessException(){super();}
 
-    public BusinessException(ResultStatus resultStatus){
-        super(resultStatus.getDesc());
-        this.code = resultStatus.getCode();
-        this.message = resultStatus.getDesc();
+    public BusinessException(ResultConstants resultConstants){
+        super(resultConstants.getDesc());
+        this.code = resultConstants.getCode();
+        this.message = resultConstants.getDesc();
     }
 
     public BusinessException(String message){

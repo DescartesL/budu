@@ -5,6 +5,9 @@ import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
 
+/**
+ * @author DesLUO
+ */
 @Data
 @ApiModel(value = "登录")
 public class LoginDTO {

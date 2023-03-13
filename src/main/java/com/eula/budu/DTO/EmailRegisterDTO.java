@@ -6,6 +6,9 @@ import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
 
+/**
+ * @author DesLUO
+ */
 @Data
 @ApiModel(value = "邮箱注册")
 public class EmailRegisterDTO {
@@ -20,4 +23,5 @@ public class EmailRegisterDTO {
     private String nickName;
 
     private String code;
+
 }

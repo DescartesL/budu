@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.naming.NoPermissionException;
 
-import static com.eula.budu.common.ResultStatus.*;
+import static com.eula.budu.common.ResultConstants.*;
 
 
 @ControllerAdvice(basePackages = "com.eula.budu")

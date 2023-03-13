@@ -25,4 +25,8 @@ public interface IUserAuthService extends IService<UserAuth> {
     RequestBody login(@Valid LoginDTO loginDTO);
 
     ResponseResult emailRegister(@Valid EmailRegisterDTO emailRegisterDTO);
+
+    ResponseResult updatePassword(EmailRegisterDTO emailRegisterDTO);
+
+    ResponseResult sendEmailCode(String email);
 }

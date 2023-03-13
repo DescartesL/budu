@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 import java.io.Serializable;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -22,6 +23,7 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
+@Builder
 @TableName("user")
 @ApiModel(value="User对象", description="系统管理-用户基础信息表")
 public class User implements Serializable {
@@ -51,10 +53,10 @@ public class User implements Serializable {
     private Integer loginType;
 
     @ApiModelProperty(value = "用户详情id")
-    private Long userAuthId;
+    private Integer userAuthId;
 
     @ApiModelProperty(value = "角色id")
-    private Long roleId;
+    private Integer roleId;
 
     @ApiModelProperty(value = "ip地址")
     private String ipAddress;
