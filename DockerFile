@@ -1,0 +1,4 @@
+FROM openjdk:8-jdk-alpine
+VOLUME /tmp
+ADD /target/budu.jar budu.jar
+ENTRYPOINT ["java","-jar","/budu.jar"]
