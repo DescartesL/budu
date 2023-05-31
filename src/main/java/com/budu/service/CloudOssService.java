@@ -17,4 +17,11 @@ public interface CloudOssService {
      * @return
      */
     ResponseResult delBatchFile(String ...key);
+
+    /**
+     * 批量上传文件
+     * @param multipartFiles 文件
+     * @return
+     */
+    ResponseResult uploadBatchFile(MultipartFile[] multipartFiles);
 }

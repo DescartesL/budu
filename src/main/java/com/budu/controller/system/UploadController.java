@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 
+/**
+ * @author DesLUO
+ */
 @RestController
 @RequestMapping("/file")
 @Api(tags = "图片上传-接口")
@@ -26,6 +29,14 @@ public class UploadController {
     @ApiOperation(value = "上传图片",httpMethod = "POST", response = ResponseResult.class, notes = "上传图片")
     public ResponseResult upload(MultipartFile multipartFile){
         return cloudOssService.upload(multipartFile);
+    }
+
+    @RequestMapping(value = "/uploadBatchFile",method = RequestMethod.POST)
+    @SaCheckPermission("/file/uploadBatchFile")
+    @ApiOperation(value = "批量上传文件",httpMethod = "POST", response = ResponseResult.class, notes = "批量上传文件")
+    @OperationLogger("批量上传文件")
+    public ResponseResult uploadBatchFile(MultipartFile[] multipartFiles){
+        return cloudOssService.uploadBatchFile(multipartFiles);
     }
 
     @RequestMapping(value = "/delBatchFile",method = RequestMethod.POST)

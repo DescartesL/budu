@@ -34,6 +34,10 @@ public abstract class AbstractQuartzJob implements org.quartz.Job {
     @Override
     public void execute(JobExecutionContext context) {
         Job job = new Job();
+        // 这段代码是在Quartz Job的执行方法中，通过JobExecutionContext获取任务属性，
+        // 然后使用BeanUtils.copyProperties方法将任务属性复制到Job对象中。
+        // 其中，context.getMergedJobDataMap().get(ScheduleConstants.TASKPROPERTIES)获取的是任务属性，而job是一个空的Job对象，用于存储任务属性。
+        // 这样做的目的是为了在任务执行过程中方便地获取任务属性。
         BeanUtils.copyProperties(context.getMergedJobDataMap().get(ScheduleConstants.TASK_PROPERTIES), job);
         try {
             before(context, job);

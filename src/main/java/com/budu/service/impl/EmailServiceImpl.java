@@ -131,8 +131,8 @@ public class EmailServiceImpl implements EmailService {
                 "            <tr>\n" +
                 "              <td class=\"p-intro\">\n" +
                 "                <h1 style=\"font-size: 26px; font-weight: bold;\">验证您的邮箱地址</h1>\n" +
-                "                <p style=\"line-height:1.75em;\">感谢您使用 拾壹博客. </p>\n" +
-                "                <p style=\"line-height:1.75em;\">以下是您的邮箱验证码，请将它输入到 拾壹博客 的邮箱验证码输入框中:</p>\n" +
+                "                <p style=\"line-height:1.75em;\">感谢您使用 不蠹的理想国. </p>\n" +
+                "                <p style=\"line-height:1.75em;\">以下是您的邮箱验证码，请将它输入到 不蠹的理想国 的邮箱验证码输入框中:</p>\n" +
                 "              </td>\n" +
                 "            </tr>\n" +
                 "            <tr>\n" +
@@ -142,13 +142,13 @@ public class EmailServiceImpl implements EmailService {
                 "            </tr>\n" +
                 "            <tr>\n" +
                 "              <td class=\"p-intro\">\n" +
-                "                <p style=\"line-height:1.75em;\">这一封邮件包括一些您的私密的 拾壹博客 账号信息，请不要回复或转发它，以免带来不必要的信息泄露风险。 </p>\n" +
+                "                <p style=\"line-height:1.75em;\">这一封邮件包括一些您的私密的 不蠹的理想国 账号信息，请不要回复或转发它，以免带来不必要的信息泄露风险。 </p>\n" +
                 "              </td>\n" +
                 "            </tr>\n" +
                 "            <tr>\n" +
                 "              <td class=\"p-intro\">\n" +
                 "                <hr>\n" +
-                "                <p style=\"text-align: center;line-height:1.75em;\">budu - 拾壹博客</p>\n" +
+                "                <p style=\"text-align: center;line-height:1.75em;\">budu - 不蠹的理想国</p>\n" +
                 "              </td>\n" +
                 "            </tr>\n" +
                 "          </tbody>\n" +
@@ -178,13 +178,32 @@ public class EmailServiceImpl implements EmailService {
         MimeMessage mimeMessage = javaMailSender.createMimeMessage();
         MimeMessageHelper mineHelper = new MimeMessageHelper(mimeMessage, true);
         // 设置邮件主题
-        mineHelper.setSubject("拾壹博客");
+        mineHelper.setSubject("不蠹的理想国");
         // 设置邮件发送者
         mineHelper.setFrom(Objects.requireNonNull(javaMailSender.getUsername()));
         // 设置邮件接收者，可以有多个接收者，中间用逗号隔开
         mineHelper.setTo(email);
         // 设置邮件发送日期
         mineHelper.setSentDate(new Date());
+        // 设置邮件的正文
+        mineHelper.setText(template,true);
+        // 发送邮件
+        javaMailSender.send(mimeMessage);
+    }
+
+    // 定时发送邮件
+    private void sendByDate(String email, String template, Date date) throws MessagingException {
+        //创建一个MINE消息
+        MimeMessage mimeMessage = javaMailSender.createMimeMessage();
+        MimeMessageHelper mineHelper = new MimeMessageHelper(mimeMessage, true);
+        // 设置邮件主题
+        mineHelper.setSubject("不蠹的理想国");
+        // 设置邮件发送者
+        mineHelper.setFrom(Objects.requireNonNull(javaMailSender.getUsername()));
+        // 设置邮件接收者，可以有多个接收者，中间用逗号隔开
+        mineHelper.setTo(email);
+        // 设置邮件发送日期
+        mineHelper.setSentDate(date);
         // 设置邮件的正文
         mineHelper.setText(template,true);
         // 发送邮件

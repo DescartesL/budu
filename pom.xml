@@ -240,6 +240,12 @@
             <artifactId>ip2region</artifactId>
             <version>1.7.2</version>
         </dependency>
+        <!--  Jsoup爬虫库   -->
+        <dependency>
+            <groupId>org.jsoup</groupId>
+            <artifactId>jsoup</artifactId>
+            <version>1.10.2</version>
+        </dependency>
     </dependencies>
 
     <build>

@@ -11,6 +11,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -63,6 +65,31 @@ public class CloudOssServiceImpl implements CloudOssService {
             return ResponseResult.error("删除文件失败");
         }
         return ResponseResult.success();
+    }
+
+    /**
+     * 批量上传文件
+     * @param multipartFiles 文件
+     * @return
+     */
+    @Override
+    public ResponseResult uploadBatchFile(MultipartFile[] multipartFiles) {
+        List<String> keyList = new ArrayList<>();
+        for(MultipartFile file : multipartFiles){
+            if (file.getSize() > 1024 * 1024 * 10) {
+                return ResponseResult.error("文件大小不能大于10M");
+            }
+            //获取文件后缀
+            String suffix = Objects.requireNonNull(file.getOriginalFilename()).substring(file.getOriginalFilename().lastIndexOf(".") + 1);
+            if (!"jpg,jpeg,gif,png".toUpperCase().contains(suffix.toUpperCase())) {
+                return ResponseResult.error("请选择jpg,jpeg,gif,png格式的图片");
+            }
+            getFileUploadWay();
+            String key = fileUploadStrategyContext.executeFileUploadStrategy(strategy, file, suffix);
+            keyList.add(key);
+
+        }
+        return ResponseResult.success(keyList);
     }
 
     /**
