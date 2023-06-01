@@ -1,9 +1,12 @@
 package com.budu.service.impl;
 
 import com.budu.common.ResponseResult;
-import com.budu.entity.ZhiYaCrawler;
-import com.budu.mapper.ZhiYaMapper;
+import com.budu.entity.crawler.Crawler;
+import com.budu.entity.crawler.ZhiYaCrawler;
+import com.budu.mapper.crawler.CrawlerMapper;
+import com.budu.mapper.crawler.ZhiYaCrawlerMapper;
 import com.budu.service.CrawlerService;
+import com.budu.vo.CrawlerVO;
 import lombok.RequiredArgsConstructor;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -19,7 +22,10 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CrawlerServiceImpl implements CrawlerService {
 
-    private final ZhiYaMapper zhiYaMapper;
+    private final CrawlerMapper crawlerMapper;
+
+    private final ZhiYaCrawlerMapper zhiYaMapper;
+
 
     @Override
     public ResponseResult getZhiYa() throws IOException {
@@ -40,5 +46,33 @@ public class CrawlerServiceImpl implements CrawlerService {
                 }
         );
         return ResponseResult.success("爬取成功！");
+    }
+
+    @Override
+    public ResponseResult addCrawler(CrawlerVO vo) {
+        Crawler crawler = Crawler.builder().name(vo.getName()).
+                                url(vo.getUrl()).
+                                cron(vo.getCron()).
+                                type(vo.getType()).
+                                status(vo.getStatus()).
+                                description(vo.getDescription()).
+                                build();
+        crawlerMapper.insert(crawler);
+        return ResponseResult.success("添加成功！");
+    }
+
+    @Override
+    public ResponseResult deleteCrawlerById(Integer id) {
+        return null;
+    }
+
+    @Override
+    public ResponseResult listCrawler() {
+        return null;
+    }
+
+    @Override
+    public ResponseResult updateCrawler(Crawler crawler) {
+        return null;
     }
 }
