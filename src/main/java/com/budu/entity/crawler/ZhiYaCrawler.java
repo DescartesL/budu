@@ -6,6 +6,9 @@ import lombok.*;
 
 import java.util.Date;
 
+/**
+ * @author DesLUO
+ */
 @Data
 @EqualsAndHashCode(callSuper = false)
 @TableName("b_crawler")
@@ -14,6 +17,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ZhiYaCrawler {
+    private Long id;
     private String title;
     private String url;
     private String summary;

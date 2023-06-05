@@ -1,10 +1,11 @@
 package com.budu.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.budu.common.ResponseResult;
 import com.budu.entity.crawler.Crawler;
 import com.budu.entity.crawler.ZhiYaCrawler;
-import com.budu.mapper.crawler.CrawlerMapper;
-import com.budu.mapper.crawler.ZhiYaCrawlerMapper;
+import com.budu.mapper.CrawlerMapper;
+import com.budu.mapper.ZhiYaCrawlerMapper;
 import com.budu.service.CrawlerService;
 import com.budu.vo.CrawlerVO;
 import lombok.RequiredArgsConstructor;
@@ -30,6 +31,7 @@ public class CrawlerServiceImpl implements CrawlerService {
     @Override
     public ResponseResult getZhiYa() throws IOException {
         Document doc = Jsoup.connect("https://tool.lu/article/report/").get();
+//        Document doc = Jsoup.connect("https://tool.lu/article/report/2023-06-03/").get();
         Elements divs =  doc.select(".page-inner");
         Elements time = divs.select("> p");
         Elements children = divs.select("> div");
@@ -63,16 +65,29 @@ public class CrawlerServiceImpl implements CrawlerService {
 
     @Override
     public ResponseResult deleteCrawlerById(Integer id) {
-        return null;
+        crawlerMapper.deleteById(id);
+        return ResponseResult.success("删除成功！");
     }
 
     @Override
     public ResponseResult listCrawler() {
-        return null;
+        QueryWrapper<Crawler> wrapper = new QueryWrapper<>();
+        wrapper.select("id", "name", "url", "cron", "type", "status", "description", "create_time");
+        List<Crawler> crawlers = crawlerMapper.selectList(wrapper);
+        return ResponseResult.success(crawlers);
     }
 
     @Override
-    public ResponseResult updateCrawler(Crawler crawler) {
-        return null;
+    public ResponseResult updateCrawler(CrawlerVO vo) {
+        Crawler crawler = Crawler.builder().
+                name(vo.getName()).
+                url(vo.getUrl()).
+                cron(vo.getCron()).
+                type(vo.getType()).
+                status(vo.getStatus()).
+                description(vo.getDescription()).
+                build();
+        crawlerMapper.update(crawler, new QueryWrapper<Crawler>().eq("name", crawler.getName()));
+        return ResponseResult.success("更新成功！");
     }
 }

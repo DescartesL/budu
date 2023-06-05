@@ -1,14 +1,11 @@
-package com.budu.controller.system;
+package com.budu.controller.crawler;
 
 import com.budu.common.ResponseResult;
 import com.budu.entity.crawler.Crawler;
 import com.budu.service.CrawlerService;
 import com.budu.vo.CrawlerVO;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author DesLUO
@@ -31,11 +28,11 @@ public class CrawlerController {
     }
 
     @PostMapping("/update")
-    public ResponseResult updateCrawler(@RequestBody Crawler crawler) {
-        return crawlerService.updateCrawler(crawler);
+    public ResponseResult updateCrawler(@RequestBody CrawlerVO vo) {
+        return crawlerService.updateCrawler(vo);
     }
 
-    @PostMapping("/list")
+    @GetMapping("/list")
     public ResponseResult listCrawler() {
         return crawlerService.listCrawler();
     }

@@ -23,7 +23,7 @@ import java.util.Date;
 @NoArgsConstructor
 public class Crawler implements Serializable {
     @ApiModelProperty(value = "爬虫id")
-    private String id;
+    private Long id;
 
     @ApiModelProperty(value = "爬虫名称")
     private String name;
